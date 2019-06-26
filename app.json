@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "newApp",
-    "slug": "cudabmApp",
+    "name": "AwesomeProject",
+    "slug": "AwesomeProject",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [

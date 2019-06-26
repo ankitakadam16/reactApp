@@ -3,98 +3,68 @@ import { Platform } from 'react-native';
 import {
   createStackNavigator,
   createBottomTabNavigator,
-  createAppContainer,
 } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
-// import LinksScreen from '../screens/LinksScreen';
+import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import CalendarScreen from '../screens/CalendarScreen';
-import NewScreen from '../screens/NewScreen';
+import HomeScreen from '../screens/HomeScreen';
+import MainScreen from '../screens/MainScreen';
+import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
+// const HomeStack = createStackNavigator({
+//   Home: Home,
+// });
+//
+// HomeStack.navigationOptions = {
+//   tabBarLabel: 'Home',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={
+//         Platform.OS === 'ios'
+//           ? `ios-information-circle${focused ? '' : '-outline'}`
+//           : 'md-information-circle'
+//       }
+//     />
+//   ),
+// };
+//
+// const LinksStack = createStackNavigator({
+//   Links: LinksScreen,
+// });
+//
+// LinksStack.navigationOptions = {
+//   tabBarLabel: 'Links',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+//     />
+//   ),
+// };
+//
+// const SettingsStack = createStackNavigator({
+//   Settings: SettingsScreen,
+// });
+//
+// SettingsStack.navigationOptions = {
+//   tabBarLabel: 'Settings',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+//     />
+//   ),
+// };
 
-const HomeStack = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: {
-    header: null,
-  },
-}
+export default createStackNavigator({
+  Home:HomeScreen,
+  Link:LinksScreen,
+  Main:MainScreen,
+  Login:LoginScreen,
+  Register:RegisterScreen
+
+},{
+  initialRouteName:'Main',
 });
-
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
-
-
-
-const CalendarStack = createStackNavigator({
-  Calendar:{
-  screen: CalendarScreen,
-    navigationOptions: {
-    header: null,
-  },
-  }
-});
-
-CalendarStack.navigationOptions = {
-  tabBarLabel: 'Calendar',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-calendar' : 'md-calendar'}
-    />
-  ),
-  header: null,
-};
-
-const NewStack = createStackNavigator({
-  New: NewScreen,
-});
-
-NewStack.navigationOptions = {
-  tabBarLabel: 'New',
-  header: null,
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-add' : 'md-add'}
-    />
-  ),
-};
-
-
-const navigateBar =  createBottomTabNavigator({
-  HomeStack,
-  CalendarStack,
-  NewStack
-});
-
-
-const navigate = createStackNavigator({
-  Login:{
-          screen: LoginScreen,
-          navigationOptions: {
-          header: null,
-        }
-   },
-   Tab:{
-     screen: navigateBar,
-     navigationOptions: {
-       header: null,
-     }
-   },
-}
-);
-export default createAppContainer(navigate);

@@ -6,54 +6,54 @@ import { StackNavigator } from 'react-navigation';
 export default  class LoginScreen extends Component {
     constructor(props) {
       super(props);
-      this.state = {username: '',
-                    password:''
+      this.state = {number: '',
+                  language: 'India'
                 };
     }
     submit() {
-    this.props.navigation.navigate('Tab')
-    // fetch('http://192.168.1.6:8000/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     username: this.state.username,
-    //     password: this.state.password,
-    //   }),
-    // }).then((response) => response.json())
-    //     .then((responseJson) => {
-    //     Alert.alert('here')
-    //     this.props.navigation.navigate('Tab')
-    //     })
-    //     .catch((error) => {
-    //       console.error(error);
-    //     });
+        Alert.alert( this.state.language,this.state.number)
     }
   render(){
      const {navigate} = this.props.navigation;
     return (
       <View style={{flex: 1,}}>
-      <ImageBackground style={ styles.imgBackground } resizeMode='cover' source={require('../assets/images/doctor.jpg')}>
-      <View style={{marginTop: 80,}}>
+      <ImageBackground style={ styles.imgBackground } resizeMode='cover' source={require('../assets/images/back.png')}>
+      <View style={{marginTop: 20,}}>
       <View style={{flex:1,flexDirection: 'column',alignItems: 'center'}}>
-      <Text style={{fontWeight: 'bold',fontSize: 40,color:'#447df4'}}> Login </Text>
+      <Text style={{fontWeight: 'bold',fontSize: 40,color:'#c37cf4'}}> Login </Text>
       <Text style={{fontSize: 10,}}> Great To See You Again </Text>
       </View>
-      <View style={{flexDirection:"row",marginTop: 110,paddingLeft:50,paddingRight:50}}>
-        <View style={{ flex: 1}}>
-          <TextInput style={{height: 40,borderBottomColor: 'black', borderBottomWidth: 1}} placeholder="Username/Email-Id" placeholderTextColor="#000" onChangeText={(text) => this.setState({username:text})}/>
+      <View style={{flex:1,flexDirection: 'column',textAlign: "left" }}>
+      <Text style={{fontSize: 15, marginTop: 90, textAlign: 'left',}}> Mobile Number </Text>
+      </View>
+      <View style={{flexDirection:"row",marginTop: 110}}>
+        <View style={{ flex: 0.3}}>
+        <Picker
+          style={{width: 100,borderColor:'black', borderWidth: 1,}}
+          selectedValue={this.state.language}
+          onValueChange={(lang) => this.setState({language: lang})}>
+          <Picker.Item label="+91 (India)" value="India" />
+          <Picker.Item label="+1 (USA)" value="USA" />
+        </Picker>
+        </View>
+        <View style={{ flex: 0.5}}>
+          <TextInput style={{height: 40,borderBottomColor: 'black', borderBottomWidth: 1}} placeholder="" onChangeText={(text) => this.setState({number:text})}/>
        </View>
       </View>
-      <View style={{flexDirection:"row",marginTop: 30,paddingLeft:50,paddingRight:50}}>
-        <View style={{ flex: 1}}>
-          <TextInput style={{height: 40,borderBottomColor: 'black', borderBottomWidth: 1}} placeholder="Password" secureTextEntry={true} placeholderTextColor="#000"  onChangeText={(text) => this.setState({username:text})}/>
-       </View>
+      <View style={{flex:1,alignItems: 'center',marginTop: 50}}>
+        <Text style={{fontSize: 10,}}> We Will Send You Four Digit OTP </Text>
       </View>
       <View style={{flex:1,flexDirection:"row",alignItems: 'center',padding:50}}>
       <TouchableHighlight  style={styles.submit}  onPress={() => this.submit()}   underlayColor='#fff'>
-        <Text style={styles.submitText}>Login</Text>
+        <Text style={styles.submitText}>Next</Text>
+      </TouchableHighlight>
+      </View>
+      <View style={{flex:1,alignItems: 'center',marginTop: 15}}>
+        <Text style={{fontSize: 10,}}> OR </Text>
+      </View>
+      <View style={{flex:1,flexDirection:"row",alignItems: 'center',marginTop: 10,padding:50}}>
+      <TouchableHighlight  style={styles.submit}  onPress={() => this.submit()}  underlayColor='#fff'>
+        <Text style={styles.submitText}>Login With Truecaller</Text>
       </TouchableHighlight>
       </View>
       </View>
@@ -61,7 +61,7 @@ export default  class LoginScreen extends Component {
       <View style={{ flex: 0.5}}>
       <Text style={{fontSize: 10}}>Create a new Accunt</Text>
       <View style={{alignItems: 'center'}}>
-      <Text style={{fontWeight: 'bold',fontSize: 20,color:'#4f5ff4'}} onPress={() => navigate('Register')} >Register</Text>
+      <Text style={{fontWeight: 'bold',fontSize: 20,color:'#c37cf4'}} onPress={() => navigate('Register')} >Register</Text>
       </View>
       </View>
       </View>
@@ -82,10 +82,10 @@ const styles = StyleSheet.create({
     marginTop:10,
     paddingTop:10,
     paddingBottom:10,
-    backgroundColor:'#447df4',
+    backgroundColor:'#b883d0',
     borderRadius:50,
-    // borderWidth: 1,
-    // borderColor: '#000000'
+    borderWidth: 1,
+    borderColor: '#fff'
   },
   submitText:{
       color:'#fff',
